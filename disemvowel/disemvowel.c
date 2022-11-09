@@ -1,22 +1,32 @@
 #include <stdlib.h>
-
+#include <stdbool.h>
+#include <string.h>
 #include "disemvowel.h"
 
-char* vowels = "aeiouAEIOU";
-int isvowel(char c){
-	for (i=0; j<11; ++j){
-	       if	
+const char* vowels = "aeiouAEIOU";
+
+bool isconsonant(char c){
+	for (int j=0; j<10; ++j){
+		if(c == vowels[j]){
+			return false;
+		}
+	}
+
+		return true;
+}
 
 char *disemvowel(char *str) {
-	int len, i;
-	char *vowels;
+	int consonantcount = 0;
+	int len = strlen(str);
+	char* disemvoweled = (char*) calloc(len+1, sizeof(char));
 
-	len = strlen(str);
-	vowels = (char*) calloc(len+1, sizeof(char));
+	for (int i=0; i<len; i++){
+		if(isconsonant(str[i])){
+			disemvoweled[consonantcount] = str[i];
+			consonantcount++;
+		}
+	}
 
-	for (i=0; i<len; ++i){
-		{
-			if(str[i] == vowels[j])
-
-  return (char*) "";
+		disemvoweled[consonantcount] = '\0';
+  return (char*) disemvoweled;
 }
